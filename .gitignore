@@ -1,0 +1,15 @@
+## Visual Studio & .NET .gitignore
+.vs/
+.vscode/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+*.ide/
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/

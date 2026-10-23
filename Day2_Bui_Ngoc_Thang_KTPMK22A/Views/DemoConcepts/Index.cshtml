@@ -1,0 +1,138 @@
+@{
+    ViewData["Title"] = "Demo 4 Khái Niệm Quan Trọng Trong ASP.NET Core MVC";
+}
+
+<div class="container py-3">
+    <div class="p-4 mb-4 bg-light rounded-3 shadow-sm border">
+        <h1 class="display-6 fw-bold text-primary">Bài Tập Tìm Hiểu & Demo 4 Khái Niệm MVC</h1>
+        <p class="lead text-muted mb-3">
+            Dự án: <strong>Day2_Bui_Ngoc_Thang_KTPMK22A</strong> - Lớp: <strong>KTPMK22A</strong>
+        </p>
+        <p>Trang này tổng hợp lý thuyết, bảng so sánh và các trang demo thực tế cho 4 khái niệm do giảng viên yêu cầu.</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- 1. Conventional Routing -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 border-top border-4 border-info">
+                <div class="card-body">
+                    <span class="badge bg-info text-dark mb-2">Khái niệm 1</span>
+                    <h4 class="card-title text-info">Conventional Routing</h4>
+                    <p class="card-text text-muted">
+                        Định tuyến theo quy ước chung khai báo tập trung tại <code>Program.cs</code> theo mẫu: 
+                        <code>{controller}/{action}/{id?}</code>. Mọi Controller tự động tuân theo mẫu này.
+                    </p>
+                    <div class="mt-auto">
+                        <a asp-controller="DemoConcepts" asp-action="ConventionalExample" asp-route-id="101" class="btn btn-outline-info w-100">
+                            Xem Demo Conventional Route &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Attribute Routing -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 border-top border-4 border-primary">
+                <div class="card-body">
+                    <span class="badge bg-primary mb-2">Khái niệm 2</span>
+                    <h4 class="card-title text-primary">Attribute Routing</h4>
+                    <p class="card-text text-muted">
+                        Định tuyến tùy biến bằng cách gắn thuộc tính <code>[Route("...")]</code> trực tiếp trên Controller và Action. 
+                        Tạo URL đẹp, chuẩn SEO, không bị bó buộc bởi tên Controller.
+                    </p>
+                    <div class="mt-auto">
+                        <a href="/hoc-attribute-routing" class="btn btn-outline-primary w-100">
+                            Xem Demo Attribute Route &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Partial View -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 border-top border-4 border-success">
+                <div class="card-body">
+                    <span class="badge bg-success mb-2">Khái niệm 3</span>
+                    <h4 class="card-title text-success">Partial View</h4>
+                    <p class="card-text text-muted">
+                        View con tái sử dụng HTML (như <code>_StudentCard.cshtml</code>). 
+                        Không có logic C# độc lập; nhận dữ liệu Model từ View cha truyền vào để render.
+                    </p>
+                    <div class="mt-auto">
+                        <a asp-controller="DemoConcepts" asp-action="PartialViewDemo" class="btn btn-outline-success w-100">
+                            Xem Demo Partial View &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. View Component -->
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm border-0 border-top border-4 border-warning">
+                <div class="card-body">
+                    <span class="badge bg-warning text-dark mb-2">Khái niệm 4</span>
+                    <h4 class="card-title text-dark">View Component</h4>
+                    <p class="card-text text-muted">
+                        Component giao diện thông minh gồm class C# riêng + View riêng. 
+                        Tự tính toán/query dữ liệu độc lập mà không cần Controller cha truyền sang.
+                    </p>
+                    <div class="mt-auto">
+                        <a asp-controller="DemoConcepts" asp-action="ViewComponentDemo" class="btn btn-outline-warning text-dark w-100">
+                            Xem Demo View Component &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bảng so sánh -->
+    <div class="card mt-5 shadow-sm">
+        <div class="card-header bg-dark text-white fw-bold">
+            Bảng Tổng Kết & So Sánh Nhanh Để Trả Lời Giảng Viên
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Cặp khái niệm</th>
+                            <th>Đặc điểm chính</th>
+                            <th>Ưu điểm nổi bật</th>
+                            <th>Trường hợp áp dụng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Conventional Routing</strong></td>
+                            <td>Khai báo 1 chỗ ở <code>Program.cs</code></td>
+                            <td>Tự động hóa, không cần viết route cho từng action</td>
+                            <td>Website MVC truyền thống, giao diện quản trị</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Attribute Routing</strong></td>
+                            <td>Gắn <code>[Route]</code> ngay trên Action/Controller</td>
+                            <td>URL linh hoạt, đẹp, chuẩn SEO, hỗ trợ Regex ràng buộc</td>
+                            <td>Web API, trang chi tiết sản phẩm / bài viết</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Partial View</strong></td>
+                            <td>File <code>.cshtml</code> nhận dữ liệu từ cha</td>
+                            <td>Tách nhỏ HTML lặp lại, tái sử dụng dễ dàng</td>
+                            <td>Thẻ card sản phẩm, thanh phân trang, modal pop-up</td>
+                        </tr>
+                        <tr>
+                            <td><strong>View Component</strong></td>
+                            <td>Gồm class C# logic riêng + file <code>.cshtml</code></td>
+                            <td>Tự query dữ liệu độc lập, không làm bẩn Controller cha</td>
+                            <td>Mini-cart, menu danh mục, widget thời tiết/server</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

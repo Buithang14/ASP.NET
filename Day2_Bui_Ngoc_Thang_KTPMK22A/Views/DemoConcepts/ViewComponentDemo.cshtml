@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Demo View Component";
+}
+
+<div class="container py-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="DemoConcepts" asp-action="Index">Trang chủ Demo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View Component</li>
+        </ol>
+    </nav>
+
+    <div class="alert alert-warning shadow-sm mb-4">
+        <h4 class="alert-heading fw-bold"><i class="bi bi-gear-wide-connected"></i> Demo Khái Niệm: View Component</h4>
+        <p class="mb-1">
+            Khác với Partial View (chỉ nhận dữ liệu từ cha), <strong>View Component</strong> có class C# riêng 
+            (<code>ServerInfoViewComponent.cs</code>). Nó tự tính toán logic, lấy giờ hiện tại và thông số server mà 
+            <strong>Controller cha không cần truyền bất kỳ dữ liệu nào</strong>!
+        </p>
+        <hr />
+        <small class="mb-0">
+            <strong>Cú pháp gọi trong View:</strong> 
+            <code>&lt;vc:server-info title="Thống Kê Trực Tiếp"&gt;&lt;/vc:server-info&gt;</code> 
+            hoặc <code>@@await Component.InvokeAsync("ServerInfo", new { title = "..." })</code>
+        </small>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- GỌI VIEW COMPONENT LẦN 1 -->
+            @await Component.InvokeAsync("ServerInfo", new { title = "Đồng hồ & Trạng thái Server (Lần 1)" })
+        </div>
+        <div class="col-md-6">
+            <!-- GỌI VIEW COMPONENT LẦN 2 (Có thể truyền tham số khác nhau) -->
+            @await Component.InvokeAsync("ServerInfo", new { title = "Hệ thống giám sát tài nguyên (Lần 2)" })
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">&larr; Quay lại danh sách Demo</a>
+    </div>
+</div>

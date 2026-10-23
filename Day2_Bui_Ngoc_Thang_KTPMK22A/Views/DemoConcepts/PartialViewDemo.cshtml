@@ -1,0 +1,42 @@
+@model IEnumerable<Day2_Bui_Ngoc_Thang_KTPMK22A.Models.Student>
+
+@{
+    ViewData["Title"] = "Demo Partial View";
+}
+
+<div class="container py-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="DemoConcepts" asp-action="Index">Trang chủ Demo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Partial View</li>
+        </ol>
+    </nav>
+
+    <div class="alert alert-success shadow-sm mb-4">
+        <h4 class="alert-heading fw-bold"><i class="bi bi-file-code"></i> Demo Khái Niệm: Partial View</h4>
+        <p class="mb-1">
+            Mỗi thẻ thông tin sinh viên bên dưới là kết quả gọi đến file Partial View: 
+            <code>Views/Shared/_StudentCard.cshtml</code>.
+        </p>
+        <hr />
+        <small class="mb-0">
+            <strong>Cú pháp gọi trong View:</strong> 
+            <code>&lt;partial name="_StudentCard" model="student" /&gt;</code>. 
+            Code HTML thẻ sinh viên chỉ viết đúng 1 lần, giúp trang không bị trùng lặp mã!
+        </small>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var student in Model)
+        {
+            <div class="col">
+                <!-- TÁI SỬ DỤNG PARTIAL VIEW -->
+                <partial name="_StudentCard" model="student" />
+            </div>
+        }
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">&larr; Quay lại danh sách Demo</a>
+    </div>
+</div>

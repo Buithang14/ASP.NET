@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Demo Conventional Routing";
+}
+
+<div class="container py-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="DemoConcepts" asp-action="Index">Trang chủ Demo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Conventional Routing</li>
+        </ol>
+    </nav>
+
+    <div class="card border-info shadow-sm mb-4">
+        <div class="card-header bg-info text-dark fw-bold">
+            <i class="bi bi-signpost-split"></i> Demo Khái Niệm: Conventional Routing (Định tuyến theo quy ước)
+        </div>
+        <div class="card-body">
+            <h5>Cách URL này được xử lý:</h5>
+            <p>
+                Được ánh xạ tự động thông qua cấu hình trong file <code>Program.cs</code>:
+            </p>
+            <pre class="bg-dark text-light p-3 rounded"><code>app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");</code></pre>
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Controller được gọi:</span>
+                    <span class="badge bg-primary">DemoConceptsController</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Action được gọi:</span>
+                    <span class="badge bg-primary">ConventionalExample</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Tham số ID nhận được:</span>
+                    <span class="badge bg-success fs-6">@ViewBag.Id</span>
+                </li>
+            </ul>
+
+            <div class="alert alert-secondary mb-0">
+                <strong>Thử nghiệm các URL theo quy ước:</strong>
+                <ul>
+                    <li><a href="/DemoConcepts/ConventionalExample/123">/DemoConcepts/ConventionalExample/123</a> (Tham số id = 123)</li>
+                    <li><a href="/demo-quy-uoc/100">/demo-quy-uoc/100</a> (Định tuyến quy ước Custom đã thêm vào <code>Program.cs</code>)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">&larr; Quay lại danh sách Demo</a>
+    </div>
+</div>

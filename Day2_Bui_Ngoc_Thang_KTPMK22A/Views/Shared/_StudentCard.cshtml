@@ -1,0 +1,20 @@
+@model Day2_Bui_Ngoc_Thang_KTPMK22A.Models.Student
+
+<div class="card h-100 shadow-sm border-0 border-top border-4 @(Model.Gpa >= 3.6 ? "border-success" : "border-primary")">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+            <div>
+                <h5 class="card-title text-primary mb-1">@Model.FullName</h5>
+                <span class="badge bg-secondary">Mã SV: @Model.StudentCode</span>
+            </div>
+            <span class="badge @(Model.Gpa >= 3.6 ? "bg-success" : "bg-primary") fs-6">
+                GPA: @Model.Gpa.ToString("0.0")
+            </span>
+        </div>
+        <p class="card-text mb-1"><strong>Lớp:</strong> @Model.ClassName</p>
+        <p class="card-text mb-2"><strong>Chuyên ngành:</strong> @Model.Major</p>
+        <div class="border-top pt-2 text-muted small">
+            <em>Render bởi: Partial View <code>_StudentCard.cshtml</code></em>
+        </div>
+    </div>
+</div>

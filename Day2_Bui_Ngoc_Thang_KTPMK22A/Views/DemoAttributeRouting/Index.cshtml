@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Demo Attribute Routing";
+}
+
+<div class="container py-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="DemoConcepts" asp-action="Index">Trang chủ Demo</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Attribute Routing</li>
+        </ol>
+    </nav>
+
+    <div class="card border-primary shadow-sm mb-4">
+        <div class="card-header bg-primary text-white fw-bold">
+            <i class="bi bi-tag-fill"></i> Demo Khái Niệm: Attribute Routing (Định tuyến theo thuộc tính)
+        </div>
+        <div class="card-body">
+            <h5 class="text-primary">Đường dẫn hiện tại: <code>@ViewBag.CurrentUrl</code></h5>
+            <p>@ViewBag.Explanation</p>
+
+            <div class="bg-dark text-light p-3 rounded mb-3">
+                <small class="text-info">// Code trên Controller:</small>
+                <pre class="text-light mb-0"><code>[Route("hoc-attribute-routing")]
+public class DemoAttributeRoutingController : Controller
+{
+    [HttpGet("")]
+    [HttpGet("trang-chu")]
+    public IActionResult Index() { ... }
+}</code></pre>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>Thử nghiệm các URL Attribute Routing khác:</strong>
+                <ul class="mb-0">
+                    <li>
+                        <a href="/hoc-attribute-routing/chi-tiet-mon-hoc/1?name=Lap-trinh-ASP-NET-Core">
+                            /hoc-attribute-routing/chi-tiet-mon-hoc/1?name=Lap-trinh-ASP-NET-Core
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/hoc-attribute-routing/chi-tiet-mon-hoc/2026?name=Kien-truc-Phan-mem">
+                            /hoc-attribute-routing/chi-tiet-mon-hoc/2026?name=Kien-truc-Phan-mem
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-controller="DemoConcepts" asp-action="Index" class="btn btn-secondary">&larr; Quay lại danh sách Demo</a>
+    </div>
+</div>

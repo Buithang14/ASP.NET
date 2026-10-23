@@ -1,0 +1,34 @@
+@model Day2_Bui_Ngoc_Thang_KTPMK22A.ViewComponents.ServerInfoViewModel
+
+<div class="card border-primary shadow-sm mb-3">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <span class="fw-bold"><i class="bi bi-cpu"></i> @ViewBag.ComponentTitle</span>
+        <span class="badge bg-light text-primary">View Component Độc Lập</span>
+    </div>
+    <div class="card-body">
+        <p class="card-text text-muted small mb-2">
+            <em>* Component này có class C# riêng, tự tính toán giờ và thông tin server mà không cần Controller cha truyền vào!</em>
+        </p>
+        <ul class="list-group list-group-flush small">
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Thời gian Server:</span>
+                <strong>@Model.CurrentTime.ToString("dd/MM/yyyy HH:mm:ss")</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>.NET Framework:</span>
+                <span class="badge bg-info text-dark">@Model.FrameworkVersion</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Hệ điều hành:</span>
+                <span>@Model.OsDescription</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+                <span>Tên máy (Host):</span>
+                <span>@Model.MachineName</span>
+            </li>
+        </ul>
+    </div>
+    <div class="card-footer bg-light text-end">
+        <small class="text-success"><i class="bi bi-check-circle"></i> Trạng thái: Hoạt động bình thường</small>
+    </div>
+</div>
