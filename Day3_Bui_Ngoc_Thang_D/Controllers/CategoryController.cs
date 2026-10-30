@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Day3_Bui_Ngoc_Thang_D.Data;
+using Day3_Bui_Ngoc_Thang_D.Models;
 
 namespace Day3_Bui_Ngoc_Thang_D.Controllers
 {
@@ -8,13 +10,18 @@ namespace Day3_Bui_Ngoc_Thang_D.Controllers
         // GET: CategoryController
         public ActionResult Index()
         {
-            return View();
+            return View(SaveData.categories);
         }
 
         // GET: CategoryController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var category = SaveData.categories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
         }
 
         // GET: CategoryController/Create
@@ -26,43 +33,54 @@ namespace Day3_Bui_Ngoc_Thang_D.Controllers
         // POST: CategoryController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([FromForm] Category category)
         {
-            try
+            if (ModelState.IsValid)
             {
+                SaveData.categories.Add(category);
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(category);
         }
 
         // GET: CategoryController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var category = SaveData.categories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
         }
 
         // POST: CategoryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Category category)
         {
-            try
+            if (ModelState.IsValid)
             {
+                var existing = SaveData.categories.FirstOrDefault(c => c.Id == id);
+                if (existing != null)
+                {
+                    existing.Name = category.Name;
+                    existing.Description = category.Description;
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(category);
         }
 
         // GET: CategoryController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var category = SaveData.categories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
         }
 
         // POST: CategoryController/Delete/5
@@ -70,14 +88,12 @@ namespace Day3_Bui_Ngoc_Thang_D.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
+            var category = SaveData.categories.FirstOrDefault(c => c.Id == id);
+            if (category != null)
             {
-                return RedirectToAction(nameof(Index));
+                SaveData.categories.Remove(category);
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }
